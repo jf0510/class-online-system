@@ -1,0 +1,130 @@
+@media (min-width: 768px) {
+    #chat-area {
+        width: 75%;
+        height: 100vh;
+        float: left;
+    }
+    #member {
+        width: 25%;
+        height: 100vh;
+        float: left;
+        box-shadow: -5px -5px 30px #ddd;
+    }
+    #chat-input {
+        width: 75%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #chat-input {
+        width: 100%;
+    }
+}
+
+#chat-area {
+    background: #eee;
+}
+
+
+/* Chat area: header */
+
+#chat-title {
+    /*    margin: .5rem 0;*/
+    margin-bottom: .5rem;
+    height: 3rem;
+    font-size: 1.6rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#chat-title .pincode-title {
+    margin-right: .5rem;
+}
+
+#chat-option {
+    margin-bottom: .5rem;
+    height: 3rem;
+    font-size: 1rem;
+}
+
+
+/* Chat area: chat-message table grid */
+
+#chat-message {
+    height: calc(100vh - 15rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: .9rem;
+}
+
+#chat-message table {}
+
+#chat-message table thead {
+    display: none;
+}
+
+#chat-message tr td {
+    border-top: none;
+    border-bottom: 1px solid #dedede;
+}
+
+#chat-message tbody tr td:nth-child(1) {
+    width: 10%;
+    text-align: center;
+}
+
+#chat-message tbody tr td:nth-child(2) {
+    width: 90%;
+}
+
+/* Chat area: message */
+
+#chat-message table img {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    margin-right: .2rem;
+    display: inline;
+}
+
+#chat-message .user-avatar {
+    display: inline;
+}
+
+#chat-message .message-sender {
+    display: inline;
+}
+
+#chat-message .message-sender b {
+    font-size: 1rem;
+}
+
+#chat-message .message-sender span {
+    color: #888;
+    font-size: .8rem;
+    font-weight: 300;
+}
+
+#chat-message table p {
+    margin: .5rem 0rem 0rem 0rem;
+}
+
+
+/* Chat area: vote */
+
+#chat-message .vote-button i {
+    color: #EF6A65;
+    font-size: 2rem;
+}
+
+#chat-message .vote-button {
+    border: none;
+    background: none;
+    padding: 0px;
+    margin-bottom: .1rem;
+}
+
+#chat-message .vote-button:hover {
+    opacity: 0.5;
+}

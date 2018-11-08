@@ -1,0 +1,36 @@
+body {
+    background: #eee;
+}
+
+
+/* create-area */
+
+@media (min-width: 768px) {
+    #create-area .card-body {
+        padding: 3rem;
+    }
+}
+
+#create-area {
+    margin: 1rem 0;
+}
+
+
+/* list-area: title */
+
+#create-area h2 {
+    border-bottom: 3px solid #eee;
+    padding-bottom: 1rem;
+}
+
+
+/* list-area: form */
+
+#create-area form {
+    padding-top: 2rem;
+}
+
+
+#create-area form button {
+    margin-top: 1rem;
+}

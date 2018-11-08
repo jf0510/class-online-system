@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="tw">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="/stylesheets/animate.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/newchatroom.css">
+    <!--  Feather icons  -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!--  Font Awesome  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>Class Chat</title>
+</head>
+
+<body>
+    <!--  Navbar  -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
+        <!--  Navbar: brand  -->
+        <a class="navbar-brand" href="/"> <img src="/images/creative.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Class Chat </a>
+        <!-- Navbar: Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button>
+        <!-- Navbar: Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#newChatroom"><i data-feather="plus" class="nav-icon"></i><span>新聊天室</span></a></li>
+                <li class="nav-item"> <a class="nav-link" href="/roomlist"><i data-feather="list" class="nav-icon"></i><span>聊天室列表</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#"><i data-feather="log-out" class="nav-icon"></i><span>登出</span></a></li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#login"><i data-feather="log-in" class="nav-icon"></i><span>登入</span></a></li>
+                <li class="nav-item"> <a href="#" data-toggle="modal" data-target="#signup" class="btn btn-outline-light" role="button" style="margin-top:.1rem">註冊</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar: Modal -->
+    <div class="modal fade" id="newChatroom" tabindex="-1" role="dialog" aria-labelledby="newChatroom" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newChatroom">新聊天室</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="options">
+                                    <div class="options-title options-create">建立</div>
+                                    <div>建立聊天室，發送邀請碼邀請夥伴。</div>
+                                    <div><img src="/images/create.svg"></div>
+                                    <button type="button" class="btn btn-create" data-toggle="modal" data-target="#createNewChatroom">建立聊天室</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="options">
+                                    <div class="options-title options-join">加入</div>
+                                    <div>輸入邀請碼，加入已存在的聊天室。</div>
+                                    <input type="text" name="pincode" id="pincode" class="form-control" placeholder="Pincode" value="">
+                                    <button type="button" name="pincode-submit" id="pincode-submit-modal" class="btn btn-join">加入聊天室</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal - createNewChatroom (no login warn) -->
+    <div class="modal fade" id="nologinWarn" tabindex="-1" role="dialog" aria-labelledby="nologinWarn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">請先登入會員</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#login">登入</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signup">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar: Modal - createNewChatroom -->
+    <div class="modal fade" id="createNewChatroom" tabindex="-1" role="dialog" aria-labelledby="newChatroom" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">建立聊天室</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="roomName">聊天室名稱</label>
+                                                <input type="text" class="form-control" id="roomName" required> </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="people">人數上限</label>
+                                                <input type="number" class="form-control" id="people" required> </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 1rem;">
+                                        <div class="col-12">
+                                            <label for="authority">權限設定</label> <a id="authorityInfo" href="#" title="權限設定" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-html="true" data-content="會員使用者：<br>需登入才能加入聊天室<br><br>匿名使用者：<br>無需登入即可加入聊天室"><i class="fas fa-info-circle"></i></a> </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="radio1">
+                                                    <input type="radio" class="form-check-input" id="private-radio1" name="authority-optradio" value="1" checked>會員使用者</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="radio2">
+                                                    <input type="radio" class="form-check-input" id="private-radio2" name="authority-optradio" value="0">匿名使用者</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 1rem;">
+                                        <div class="col-12">
+                                            <label for="mode">聊天室模式</label>
+                                            <a id="modeInfo" href="#" title="聊天室模式" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-html="true" data-content="討論：<br>即時討論與聊天<br><br>投票排行榜：<br>即時票選、排行最佳內容"><i class="fas fa-info-circle"></i></a>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="radio1">
+                                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="tradition" checked>討論</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="radio2">
+                                                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="voting">投票排行榜</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="create-room-button" type="button" class="btn btn-info btn-block">建立</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar: Modal - login -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">登入</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <form id="login-form" action="#" method="post" role="form" class="form-area show">
+                                    <div class="form-group">
+                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="" required> </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required> </div>
+                                    <div class="form-group form-check">
+                                        <label type="checkbox" name="remember" id="remember" class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" for="remember"> Remember me </label>
+                                    </div>
+                                    <button type="submit" name="login-submit" id="login-submit" class="btn btn-block btn-info">登入</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar: Modal - signup -->
+    <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">註冊</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <form id="register-form" action="#" method="post" role="form" class="form-area hide">
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" value="" required> </div>
+                                    <div class="form-group">
+                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="" required> </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required> </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm Password" required> </div>
+                                    <button type="submit" name="register-submit" id="register-submit" class="btn btn-block btn-info">註冊</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="chat-area">
+        <div class="container-fluid inner">
+            <div class="row">
+                <!-- <div id="chat-title" class="col"> <span class="badge-info badge-pill pincode-title">123456</span>書報討論</div> -->
+                <div id="chat-title" class="col"> <span class="badge-info badge-pill pincode-title">______</span></div>
+            </div>
+            <div id="chat-option" class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn btn-outline-info btn-block" id="newest">最新的</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-outline-info btn-block" id="hottest">最熱門的</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="chat-message">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="messages">
+                                <!-- <tr class="slideInLeft animated">
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="fas fa-heart"></i></button>
+                                        <div id="voteNum">100</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="apple72388"></div>
+                                        <div class="message-sender"><b>apple72388</b> <span>3:25 PM</span></div>
+                                        <p>Who is your favorite entertainer (comedian, musician, actor, etc.)?</p>
+                                    </td>
+                                </tr>
+                                <tr class="slideInLeft animated">
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">99</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="cat37267"></div>
+                                        <div class="message-sender"><b>cat37267</b> <span>3:25 PM</span></div>
+                                        <p>What was the last funny video you saw?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">90</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="dog12394"></div>
+                                        <div class="message-sender"><b>dog12394</b> <span>3:26 PM</span> </div>
+                                        <p>What do you do to get rid of stress?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">80</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="dog12394"></div>
+                                        <div class="message-sender"><b>dog12394</b> <span>3:26 PM</span> </div>
+                                        <p>Do you have any pets? What are their names?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="fas fa-heart"></i></button>
+                                        <div id="voteNum">80</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="pig38472"></div>
+                                        <div class="message-sender"><b>pig38472</b> <span>3:27 PM</span></div>
+                                        <p>Where did you go last weekend? What did you do?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">70</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="bottle72642"></div>
+                                        <div class="message-sender"><b>bottle72642</b> <span>3:27 PM</span> </div>
+                                        <p>What three words best describe you?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">50</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="water23476"></div>
+                                        <div class="message-sender"><b>water23476</b> <span>3:27 PM</span> </div>
+                                        <p>If you had intro music, what song would it be? Why?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="fas fa-heart"></i></button>
+                                        <div id="voteNum">20</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="option23476"></div>
+                                        <div class="message-sender"><b>option23476</b> <span>3:27 PM</span> </div>
+                                        <p>Who is your oldest friend? Where did you meet them?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">10</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="line32476"></div>
+                                        <div class="message-sender"><b>line32476</b> <span>3:27 PM</span> </div>
+                                        <p>Are you very active of do you prefer to just relax in your free time?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">5</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="feather36546"></div>
+                                        <div class="message-sender"><b>feather36546</b> <span>3:27 PM</span> </div>
+                                        <p>hey!</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="votePlusBtn" type="button" class="vote-button"><i class="far fa-heart"></i></button>
+                                        <div id="voteNum">0</div>
+                                    </td>
+                                    <td>
+                                        <div class="user-avatar"><img avatar="dog12394"></div>
+                                        <div class="message-sender"><b>dog12394</b> <span>3:28 PM</span></div>
+                                        <p>What?</p>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="chat-input">
+                    <textarea type="text" placeholder="Write Your message..." id="message-input"></textarea>
+                    <button type="button" id="send-button"><i class="send-icon" data-feather="send"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="member" class="d-none d-md-block d-lg-block">
+        <div class="container-fluid inner">
+            <div class="row">
+
+                <div id="my-profile" class="col"> <img avatar="">
+                    <p id="my-name"></p>
+                    <div class="onoffswitch mx-auto">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                        <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="member-title" class="col"> 成員名單 </div>
+            </div>
+            <div class="row">
+                <div class="member-list-div col">
+                    <ul id="member-list">
+                        <!-- <li><img avatar="apple72388"><span>apple72388</span> </li>
+                        <li><img avatar="cat37267"> <span>cat37267</span></li>
+                        <li><img avatar="pig38472"> <span>pig38472</span> </li>
+                        <li><img avatar="bottle72642"> <span>bottle72642</span> </li>
+                        <li><img avatar="water23476"> <span>water23476</span> </li>
+                        <li><img avatar="option23476"> <span>option23476</span> </li>
+                        <li><img avatar="line32476"> <span>line32476</span></li>
+                        <li><img avatar="feather36546"><span>feather36546</span> </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Optional JavaScript -->
+    <script>
+        feather.replace()
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
+    <script src="/javascripts/letteravatar.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/navcontroller.js"></script>
+    <script src="/javascripts/login.js"></script>
+    <script src="/javascripts/logout.js"></script>
+    <script src="/javascripts/regist.js"></script>
+    <script src="/javascripts/chatroom.js"></script>
+    <script src="/javascripts/createroom.js"></script>
+    <script src="/javascripts/joinroom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+@media (min-width: 768px) {
+    #login-register .card-body, #pincode-area .card-body {
+    padding: 3rem;
+}
+}
+
+#login-register, #pincode-area {
+    height: 100vh;
+    background: #eee;
+}
+
+#login-register .inner{
+    height: 60vh;
+    padding: 20vh 0;
+}
+
+#pincode-area .inner {
+    height: 50vh;
+    padding: 25vh 0;
+}
+
+
+.form-area {
+    padding-top: 2rem;
+}
+
+.btn-custom {
+    font-size: 1.6rem;
+}
+
+
+/* show & hiide */
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* Pincode */
+#pincode-area h1 {
+    border-bottom: 3px solid #eee;
+    padding-bottom: 1rem;
+}

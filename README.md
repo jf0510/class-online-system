@@ -1,11 +1,11 @@
 # ClassChat
 ClassChat is a multi-room, real-time messaging application built on top of node.js, socket.io. It implements custom session control, allowing users to create, join, and interact with multiple rooms at the same time by simply input an unique pincode. 
 
-<img src=".image/landing.png" alt="langing page" width="700">
+<img src=".images/landing.png" alt="langing page" width="700">
 
-<img src=".image/chat.png" alt="chatting page" width="700">
+<img src=".images/chat.png" alt="chatting page" width="700">
 
-<img src=".image/vote.png" alt="voting page" width="700">
+<img src=".images/vote.png" alt="voting page" width="700">
 
 ## Demo
 Sorry, it's now offline.

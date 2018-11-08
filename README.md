@@ -13,6 +13,7 @@ Sorry, it's now offline.
 ## Requirement
 - Nodejs
 - socket.IO
+- MySQL(if needed, only to save chat history if websocket server close)
 
 ## Installation
 Clone the repo (`https://github.com/jf0510/online-classroom-system.git`), `cd` into the new directory and `npm install` the dependencies. 

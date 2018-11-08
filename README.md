@@ -1,5 +1,5 @@
-# ClassChat
-ClassChat is a multi-room, real-time messaging application built on top of node.js, socket.io. It implements custom session control, allowing users to create, join, and interact with multiple rooms at the same time by simply input an unique pincode. 
+# Online Classroom System
+Online Classroom System is a multi-room, real-time messaging application built on top of node.js, socket.io. It implements custom session control, allowing users to create, join, and interact with multiple rooms at the same time by simply input an unique pincode. 
 
 <img src="images/landing.png" alt="langing page" width="700">
 
